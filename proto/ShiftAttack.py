@@ -49,7 +49,7 @@ def crackShift(Vi,gamma):
     return((m_max,index_max,gamma[index_max]))
     
 if __name__ == '__main__':
-    text = "example of a secret but sufficiently long english plain text"
+    text = "example of a text"
     key = 4
     ciphertext = shift_encrypt(text,key)
     print("Input text: "+text)

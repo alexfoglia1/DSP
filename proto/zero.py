@@ -1,9 +1,10 @@
+gamma = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
 def clean(text):
 	newstr = text.lower()
-	newstr = newstr.replace(" ","")
-	newstr = newstr.replace(".","")
-	newstr = newstr.replace("?","")
-	newstr = newstr.replace("!","")
+	for ch in newstr:
+	    if ch not in gamma:
+	        newstr = newstr.replace(ch,'')
 	return newstr
 
 def all_qgrams(q, text):
