@@ -93,7 +93,10 @@ if __name__ == '__main__':
     if q>0:
         for i in range(1,q+1):
             qgrams = all_qgrams(i, txt)
-            plot_dictionary(i,shannon_h(qgrams),"-gram H distribution")
-            count = qgram_count(qgrams, txt)
-            plot_dictionary(i,count,"-gram frequencies")
+            for qgram in qgrams:
+                if len(qgram)>1:
+                    print("c index of "+qgram+" = "+str(c_index(qgram)))
+            #plot_dictionary(i,shannon_h(qgrams),"-gram H distribution")
+            #count = qgram_count(qgrams, txt)
+             #plot_dictionary(i,count,"-gram frequencies")
 
