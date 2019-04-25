@@ -163,7 +163,7 @@ def testOnCasualCiphertexts():
     print("CRT RSA\t\tTotal time (sec)\tMaximum time (sec)\tMinimum time (sec)\tAverage time (sec)")
     print("\t\t{}\t{}\t{}\t{}\n".format(totcrt,maxcrt,mincrt,avgcrt))
     print("Difference\t{}\t{}\t{}\t{}".format(difftot,diffmax,diffmin,diffavg))
-    print("\t\t({})%\t({})%\t({}%)\t({})%".format((100*difftot)/totstd,(100*diffmax)/maxstd,(100*diffmin)/minstd,(100*diffavg)/avgstd))
+    print("\t\t({})%\t({})%\t({})%\t({})%".format((100*difftot)/totstd,(100*diffmax)/maxstd,(100*diffmin)/minstd,(100*diffavg)/avgstd))
 
 if __name__ == '__main__':
     testSchemaSTD()
