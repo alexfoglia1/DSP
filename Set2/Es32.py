@@ -58,18 +58,18 @@ def test(filename = None, size = 100):
         _n = n[i]
         d = de[i][0]
         e = de[i][1]
-        print("Testing on n = {} d = {} e = {}".format(_n,d,e))
+        print("Testing on\nn = {}\nd = {}\ne = {}\n".format(_n,d,e))
         t0 = t.time()
         res = decryptionexp(_n,d,e)
         delta_t = t.time()-t0
         it.append(res[1])
         times.append(delta_t)
         print("Iterations: {}".format(res[1]))
-        print("Elapsed time: {} sec".format(delta_t))
+        print("Elapsed time: {} sec\n".format(delta_t))
     avg_it = sum(it)/size
     avg_time = sum(times)/size
     print("****** Results ******")
-    print("Avg it\tAvg time (s)\tVar time (s^2)")
+    print("Avg it\tAvg time (s)\t\tVar time (s^2)")
     print("{}\t{}\t{}".format(avg_it,avg_time,var(times)))
 
 def generateToFile(filename, size = 100):
@@ -92,6 +92,7 @@ def generateToFile(filename, size = 100):
         print("{}-th step done".format(i))
         i = i + 1
     f.close()
+    
 if __name__ == '__main__':
     #generateToFile("nde.txt",100)
     test("nde.txt",100)
