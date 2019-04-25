@@ -7,12 +7,14 @@ def decryptionexp(n, d, e):
         _m //= 2
     while True:
         it = it + 1
-        x = randPrime(2, n, 10)
-        v = fastExp(x, _m, n)
+        x = r.randint(1, n-1)
+        if m.gcd(x, n) != 1:
+            return x, it
+        v = pow(x, _m, n)
         if v == 1:
             continue
         while v != 1:
-            v0, v = v, fastExp(v, 2, n)
+            v0, v = v, pow(v, 2, n)
         if v0 != -1 and v0 != n-1:
             return m.gcd(v0 + 1, n), it
             
@@ -26,7 +28,7 @@ def var(v):
 def test():
     pq = []
     print("Generating p,q . . .")
-    for i in range(0,100):
+    for i in range(0,10):
         pq.append((randPrime(10**150,10**151,10),randPrime(10**150,10**151,10)))
         print("{}-th step done".format(i))
     de = []
@@ -40,7 +42,7 @@ def test():
         de.append((priv[0],pub[0]))
     it = []
     times = []
-    for i in range(0,100):
+    for i in range(0,10):
         n = pq[i][0]*pq[i][1]
         d = de[i][0]
         e = de[i][1]
@@ -52,13 +54,33 @@ def test():
         times.append(delta_t)
         print("Iterations: {}".format(res[1]))
         print("Elapsed time: {} sec".format(delta_t))
-    avg_it = sum(it)/100
-    avg_time = sum(times)/100
+    avg_it = sum(it)/10
+    avg_time = sum(times)/10
     print("****** Results ******")
     print("Avg it\tAvg time (s)\tVar time (s^2)")
     print("{}\t{}\t{}".format(avg_it,avg_time,var(times)))
 
+def generateToFile(filename, size = 100):
+    f = open(filename,'w+')
+    pq = []
+    print("Generating p,q . . .")
+    for i in range(0,size):
+        pq.append((randPrime(10**150,10**151,10),randPrime(10**150,10**151,10)))
+        print("{}-th step done".format(i+1))
+    i = 1
+    print("Generating d,e . . .")
+    for pair in pq:
+        p = pair[0]
+        q = pair[1]
+        n = p*q
+        priv,pub = rsaKeyGen(p,q)
+        d = priv[0]
+        e = pub[0]
+        f.write("{},{},{}\n".format(n,d,e))
+        print("{}-th step done".format(i))
+        i = i + 1
+    f.close()
 if __name__ == '__main__':
-    test()
+    generateToFile("nde.txt")
     
             
