@@ -10,11 +10,11 @@ def decryptionexp(n, d, e):
         x = r.randint(1, n-1)
         if m.gcd(x, n) != 1:
             return x, it
-        v = pow(x, _m, n)
+        v = fastExp(x, _m, n)
         if v == 1:
             continue
         while v != 1:
-            v0, v = v, pow(v, 2, n)
+            v0, v = v, fastExp(v, 2, n)
         if v0 != -1 and v0 != n-1:
             return m.gcd(v0 + 1, n), it
             
