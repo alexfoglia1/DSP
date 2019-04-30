@@ -14,7 +14,7 @@ def extEuclide(a, b):
     if t < 0:
         t = t + b
     if r>1:
-        t = None
+        t = -1
     return int(r), int(t)
     
 def fastExp(base, exp, mod):
@@ -46,7 +46,9 @@ def rabinTest(x, n):
     return _x[0] != 1 and checkModule(_x, n) 
 
 
-def randPrime(inf, sup, repeats):
+def randPrime(inf, sup, alpha = 0.001):
+    k = m.ceil(m.log2(1/alpha)/2)
+    repeats = int(k)
     rnd = 0
     while True:
         rnd = r.randint(inf, sup)
@@ -76,9 +78,9 @@ def rsaKeyGen(p, q):
 def rsaKeyGenCRT(p, q):
     n = p * q
     euler = (p - 1) * (q - 1)
-    d = randPrime(2, n - 1, 10)
+    d = randPrime(2, n - 1, 0.001)
     while d != 1 and extEuclide(d, euler)[0] != 1:
-        d = randPrime(2, n-1, 20)
+        d = randPrime(2, n-1, 0.0005)
     _q = extEuclide(q, p)[1]
     _p = extEuclide(p, q)[1]
     e = extEuclide(d, euler)
@@ -100,8 +102,8 @@ def testSchemaCRT():
     MAX = 10**(N+1)
     plaintext = r.randint(MIN,MAX)
     print("Original plaintext: {}".format((plaintext)))
-    p = randPrime(MIN,MAX,10)
-    q = randPrime(MIN,MAX,10)
+    p = randPrime(MIN,MAX)
+    q = randPrime(MIN,MAX)
     priv,pub = rsaKeyGenCRT(p,q)
     ciphertext = rsaEncrypt(plaintext,pub)
     print("Ciphertext: {}".format(ciphertext))
@@ -116,8 +118,8 @@ def testSchemaSTD():
     MAX = 10**(N+1)
     plaintext = r.randint(MIN,MAX)
     print("Original plaintext: {}".format((plaintext)))
-    p = randPrime(MIN,MAX,10)
-    q = randPrime(MIN,MAX,10)
+    p = randPrime(MIN,MAX)
+    q = randPrime(MIN,MAX)
     priv,pub = rsaKeyGen(p,q)
     ciphertext = rsaEncrypt(plaintext,pub)
     print("Ciphertext: {}".format(ciphertext))
@@ -127,11 +129,11 @@ def testSchemaSTD():
 
 def testOnCasualCiphertexts():
     print("*************COMPARISON*************")
-    N = 150
+    N = 310
     MIN = 10**N
     MAX = 10**(N+1)
-    p = randPrime(MIN,MAX,10)
-    q = randPrime(MIN,MAX,10)
+    p = randPrime(MIN,MAX)
+    q = randPrime(MIN,MAX)
     ciphertexts = []
     exectimestd = []
     exectimecrt = []

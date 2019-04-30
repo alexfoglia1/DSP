@@ -33,7 +33,7 @@ def test(filename = None, size = 100):
         #generate n,p,q,d,e
         print("Generating p,q . . .")
         for i in range(0,size):
-            pq.append((randPrime(10**150,10**151,10),randPrime(10**150,10**151,10)))
+            pq.append((randPrime(10**150,10**151),randPrime(10**150,10**151)))
             print("{}-th step done".format(i+1))
         for pair in pq:
             p = pair[0]
@@ -77,7 +77,7 @@ def generateToFile(filename, size = 100):
     pq = []
     print("Generating p,q . . .")
     for i in range(0,size):
-        pq.append((randPrime(10**150,10**151,10),randPrime(10**150,10**151,10)))
+        pq.append((randPrime(10**150,10**151),randPrime(10**150,10**151)))
         print("{}-th step done".format(i+1))
     i = 1
     print("Generating d,e . . .")
