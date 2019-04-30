@@ -4,9 +4,3 @@ c1 = 82819140145469
 c2 = 157356442552819173976949
 m = fastExp(c1,2,n)/c2
 print ("Deciphered message: {}".format(m))
-k1 = (3,n)
-k2 = (5,n)
-cipher1 = rsaEncrypt(m, k1)
-cipher2 = rsaEncrypt(m, k2)
-print("Ciphered 1: {} [{}]".format(cipher1,cipher1==c1))
-print("Ciphered 2: {} [{}]".format(cipher2,cipher2==c2))
