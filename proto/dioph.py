@@ -4,6 +4,8 @@ a = int(sys.argv[1])
 b = int(sys.argv[2])
 tn = int(sys.argv[3])
 
+print("{}x + {}y = {}".format(a,b,tn))
+
 u = 1
 v = 0
 u1 = 0
@@ -18,5 +20,9 @@ while b != 0:
 
 x = (u*tn)/a
 y = (v*tn)/a
+
+
+
+
 
 print("x = {} y = {}".format(x,y))
