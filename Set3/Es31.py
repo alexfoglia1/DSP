@@ -17,6 +17,17 @@ shift = lambda s,n : s[n:] + s[:n]
 
 __exp__ = lambda a,b : pow(2,a*b)
 
+def __init__():
+    englishTexts = [e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,\
+                        e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,\
+                        e21,e22,e23,e24,e25,e26,e27,e28,e29,e30,\
+                        e31,e32,e33,e34,e35,e36,e37,e38,e39,e40,\
+                        e41,e42,e43,e44,e45,e46,e47,e48,e49,e50]
+    randomTexts  = []
+    for i in range(0,50):
+        randomTexts.append(rndText())
+    return englishTexts,randomTexts
+
 def countChars(text):
     occ = {}
     for char in gamma:
@@ -82,14 +93,7 @@ def rndText():
     return text
 
 if __name__ == '__main__':
-    englishTexts = [e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,\
-                    e11,e12,e13,e14,e15,e16,e17,e18,e19,e20,\
-                    e21,e22,e23,e24,e25,e26,e27,e28,e29,e30,\
-                    e31,e32,e33,e34,e35,e36,e37,e38,e39,e40,\
-                    e41,e42,e43,e44,e45,e46,e47,e48,e49,e50]
-    randomTexts  = []
-    for i in range(0,50):
-        randomTexts.append(rndText())
+    englishTexts,randomTexts = __init__()
     en,ran = 0,0
     for text in englishTexts:
         a = hTest(text)
