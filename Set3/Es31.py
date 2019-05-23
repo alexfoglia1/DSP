@@ -105,5 +105,5 @@ if __name__ == '__main__':
         print("Test on random text: {}".format(a))
         if not a[0]:
             ran = ran + 1
-    print("Total times null hypotesis not rejected: {}".format(en))
-    print("Total times null hypotesis rejected: {}".format(ran))
+    print("Total times english recognized: {}".format(en))
+    print("Total times random  recognized: {}".format(ran))
