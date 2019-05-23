@@ -157,15 +157,15 @@ def decode(decode_dict, text):
             continue
     return result
 
-
-r = build_tree(gamma, p_freq)
-print("Tree:")
-r.display()
-code_dict = assign_code(r)
-decode_dict = assign_decode(code_dict)
-e = encode(code_dict,"thisisanexampleofashortenglishtexthathastobecompressedusingthehuffmantreealgorithmshownatlesson")
-print("Encode:")
-print(e)
-d = decode(decode_dict, e)
-print("Decode:")
-print(d)
+if __name__ == '__main__':
+    r = build_tree(gamma, p_freq)
+    print("Tree:")
+    r.display()
+    code_dict = assign_code(r)
+    decode_dict = assign_decode(code_dict)
+    e = encode(code_dict,"thisisanexampleofashortenglishtexthathastobecompressedusingthehuffmantreealgorithmshownatlesson")
+    print("Encode:")
+    print(e)
+    d = decode(decode_dict, e)
+    print("Decode:")
+    print(d)
