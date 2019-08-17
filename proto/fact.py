@@ -20,7 +20,7 @@ def detIsPrime(n):
 def factorize(n):
     N = n
     primes = []
-    for i in range(2, n):
+    for i in range(2, n+1):
         if isPrime(i):
             primes.append(i)
     factors = []
@@ -30,7 +30,10 @@ def factorize(n):
     return factors
 
 N = int(sys.argv[1])
-useRabin = ( int(sys.argv[2]) >= 1 )
+try:
+    useRabin = ( int(sys.argv[2]) >= 1 )
+except:
+    useRabin = False
 N_IN = N
 t0 = time.time()
 factors = factorize(N)
