@@ -19,7 +19,7 @@ def detIsPrime(n):
 
 def factorize(n):
     N = n
-    primes = []
+    primes = [2]
     for i in range(2, n+1):
         if isPrime(i):
             primes.append(i)

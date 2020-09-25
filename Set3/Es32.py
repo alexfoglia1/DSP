@@ -157,6 +157,14 @@ def decode(decode_dict, text):
             continue
     return result
 
+def toUint(binary):
+    conv = 0
+    N = len(binary)
+    for i in range(0, N):
+        coeff = ord(binary[i]) - 48
+        conv = conv + int(coeff*(2**(N-i-1)))
+    return conv
+
 if __name__ == '__main__':
     r = build_tree(gamma, p_freq)
     print("Tree:")
@@ -166,6 +174,25 @@ if __name__ == '__main__':
     e = encode(code_dict,"thisisanexampleofashortenglishtexthathastobecompressedusingthehuffmantreealgorithmshownatlesson")
     print("Encode:")
     print(e)
-    d = decode(decode_dict, e)
-    print("Decode:")
+    str_encoded = []
+    i = 0
+    while i < len(e):
+        if i + 15 < len(e):
+            str_encoded.append(e[i:i+15])
+        else:
+            str_encoded.append(e[i:-1])
+        i = i + 16
+    str_enc = ''
+    for character in str_encoded:
+        str_enc = str_enc + chr(toUint(character))
+    print("String compressed: " + str_enc)
+    string_decoded = ''
+    for character in str_enc:
+        n = ord(character)
+        bin_n = "{0:b}".format(n)
+        string_decoded = string_decoded + bin_n
+    print("Encode obtained from string decoded:")
+    print(string_decoded)
+    d = decode(decode_dict, string_decoded)
+    print("String decompressed:")
     print(d)
